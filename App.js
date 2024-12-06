@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import Header from './src/Header';
+import List from './src/List';
 
 function App() {
   const [feed, setFeed] = useState([
     {
-      id: 1,
-      nome: 'Matheus Silva',
-      descricao: 'Mais um dia de muitos bugs',
-      imgPerfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
+      id: '1',
+      nome: 'Lucas Silva',
+      descricao: 'Mais um dia de muitos bugs :)',
+      imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
       imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto1.png',
       likeada: true,
       likers: 1,
@@ -54,6 +55,12 @@ function App() {
   return (
     <View style={styles.container}>
       <Header />
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        keyExtractor={item => item.id}
+        data={feed}
+        renderItem={({item}) => <List data={item} />}
+      />
     </View>
   );
 }
